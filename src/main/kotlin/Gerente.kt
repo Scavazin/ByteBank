@@ -1,11 +1,12 @@
-class Gerente( val nome:String,
-               val cpf : Int,
-               val salario : Double = 12000.0,
+class Gerente( nome:String,
+               cpf : Int,
+               salario : Double ,
                var senha: Int
-               ) {
-    fun bonificacao(): Double{
-        return salario*0.2
-    }
+               ) : Funcionario(
+    nome,
+    cpf,
+    salario){
+    override fun bonificacao(): Double = super.bonificacao() + salario
     fun autentica(senha : Int): Boolean {
         return this.senha==senha
     }
