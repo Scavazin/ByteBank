@@ -1,21 +1,18 @@
 import java.nio.DoubleBuffer
 
 fun main() {
-    val contaA=Conta()
-    val contaB=Conta()
+    val contaA=Conta("Alex", 1000)
+    val contaB=Conta("Ana", 2000)
 
     println("Bem vindo ao Byte Bank")
 
-    contaA.titular="Alex"
-    contaA.numeroConta=1000
-    contaA.saldo=400.0
 
-    contaB.titular="Ana"
-    contaB.numeroConta=2000
-    contaB.saldo=800.0
+    contaA.deposita(400.0)
+    contaB.deposita(800.0)
 
     contaA.saca(500.0)
     contaA.deposita(500.0)
+
     println("Saldo da ${contaA.titular}: ${contaA.saldo}")
 
     contaB.saca(300.0)
@@ -34,16 +31,23 @@ fun testaCondicoes(saldo: Double) {
     else if (saldo == 0.0) println("Saldo zero")
     else println("Saldo negativo")
 }
-class Conta{
-     var titular = ""
-     var numeroConta: Int = 0
-     var saldo: Double = 0.0
-         set(valor){
-            if(valor>=0)
-            field=valor
-        }
+class Conta( var titular:String,var numeroConta: Int){
+ // It could be that, but it is more simple the way it is actually coded
+ // The declaration of variables that must have some value is made directly in the constructor
 
+//     var titular = titular
+//     var numeroConta = numeroConta
+     var saldo: Double = 0.0
+         private set
+//   The function below is used when needs some logic involved, when this need is not
+//   necessary, we use the pattern constructor in Conta(), how it is actually implemented
+
+//    constructor(titular:String, numeroConta: Int){
+//        this.titular= titular
+//        this.numeroConta=numeroConta
+//    }
     fun deposita( valor: Double){
+        if(valor>0)
         this.saldo+=valor
     }
 
