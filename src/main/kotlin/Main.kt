@@ -6,27 +6,27 @@ fun main() {
 
     println("Bem vindo ao Byte Bank")
 
-    contaA.setTitular("Alex")
-    contaA.setNumeroConta(1000)
-    contaA.setSaldo(400.0)
+    contaA.titular="Alex"
+    contaA.numeroConta=1000
+    contaA.saldo=400.0
 
-    contaB.setTitular("Ana")
-    contaB.setNumeroConta(2000)
-    contaB.setSaldo(800.0)
+    contaB.titular="Ana"
+    contaB.numeroConta=2000
+    contaB.saldo=800.0
 
     contaA.saca(500.0)
     contaA.deposita(500.0)
-    println("Saldo da ${contaA.getTitular()}: ${contaA.getSaldo()}")
+    println("Saldo da ${contaA.titular}: ${contaA.saldo}")
 
     contaB.saca(300.0)
     contaB.deposita(1000.0)
-    println("Saldo da ${contaB.getTitular()}: ${contaB.getSaldo()}")
+    println("Saldo da ${contaB.titular}: ${contaB.saldo}")
 
     contaA.transefere(500.0,contaB)
 
 
-    println("${contaA.getTitular()} -> ${contaA.getSaldo()}")
-    println("${contaB.getTitular()} -> ${contaB.getSaldo()}")
+    println("${contaA.titular} -> ${contaA.saldo}")
+    println("${contaB.titular} -> ${contaB.saldo}")
 }
 
 fun testaCondicoes(saldo: Double) {
@@ -35,9 +35,13 @@ fun testaCondicoes(saldo: Double) {
     else println("Saldo negativo")
 }
 class Conta{
-    private var titular = ""
-    private var numeroConta: Int = 0
-    private var saldo: Double = 0.0
+     var titular = ""
+     var numeroConta: Int = 0
+     var saldo: Double = 0.0
+         set(valor){
+            if(valor>=0)
+            field=valor
+        }
 
     fun deposita( valor: Double){
         this.saldo+=valor
@@ -57,27 +61,6 @@ class Conta{
         }
         else
             println("Seu saldo é de ${this.saldo}. Refaça o pedido de transferência até este valor")
-    }
-    fun getSaldo():Double{
-        return saldo
-    }
-    fun setSaldo(valor: Double):Double{
-        saldo=valor
-        return valor
-    }
-    fun setTitular(valor: String):String{
-        titular=valor
-        return valor
-    }
-    fun setNumeroConta(valor: Int):Int{
-        numeroConta=valor
-        return valor
-    }
-    fun getTitular():String{
-        return titular
-    }
-    fun getNumeroConta():Int{
-        return numeroConta
     }
 }
 
