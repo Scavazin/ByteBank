@@ -31,7 +31,7 @@ fun testaCondicoes(saldo: Double) {
     else if (saldo == 0.0) println("Saldo zero")
     else println("Saldo negativo")
 }
-class Conta( var titular:String,var numeroConta: Int){
+class Conta( val titular:String, val numeroConta: Int){
  // It could be that, but it is more simple the way it is actually coded
  // The declaration of variables that must have some value is made directly in the constructor
 
