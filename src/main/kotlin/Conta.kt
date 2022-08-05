@@ -1,5 +1,5 @@
 
-class Conta(val titular:String, val numeroConta: Int){
+open class Conta(val titular:String, val numeroConta: Int){
  // It could be that, but it is more simple the way it is actually coded
  // The declaration of variables that must have some value is made directly in the constructor
 
@@ -19,7 +19,7 @@ class Conta(val titular:String, val numeroConta: Int){
         this.saldo+=valor
     }
 
-    fun saca(valor: Double){
+    open fun saca(valor: Double){
         if(this.saldo>=valor)
             this.saldo-=valor
         else
@@ -34,4 +34,6 @@ class Conta(val titular:String, val numeroConta: Int){
         else
             println("Seu saldo é de ${this.saldo}. Refaça o pedido de transferência até este valor")
     }
+
+    open fun saca() {}
 }
